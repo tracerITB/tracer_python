@@ -20,5 +20,5 @@ with st.container():
     with open('style.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-# Side bar
-st.sidebar.image("image/logo.jpeg", caption="ITB Tracer Study")
+# # Side bar
+# st.sidebar.image("image/logo.jpeg", caption="ITB Tracer Study")
