@@ -1,4 +1,10 @@
 /* style.css */
+
+.navbar-brand {
+    font-weight: bold;
+    font-family: courier;
+}
+
 .header {
     display: flex;
     justify-content: center;
@@ -6,11 +12,6 @@
     background-color: #fff;
     color: #fff;
     padding: 10px 20px;
-}
-
-.header .logo img {
-    max-width: 150px;
-    height: auto;
 }
 
 .header .search-bar {
@@ -41,19 +42,14 @@
 .navbar {
     background-color: #be984e;
     color: #fff;
-    border-radius: 25px;
+    border-radius: 50px;
 }
 
 .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 10px 20px;
-}
-
-.logo img {
-    max-width: 60px;
-    height: auto;
 }
 
 .menu {
@@ -68,7 +64,7 @@
 }
 
 .menu li:last-child {
-    margin-right: 0;
+    margin-right: 20px;
 }
 
 .menu a {
@@ -95,7 +91,7 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #fff;
+    background-color: #000000;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -108,6 +104,6 @@
     padding: 10px;
 }
 
-.dropdown-menu li:hover {
+/* .dropdown-menu li:hover {
     background-color: #f0f0f0;
-}
+} */
