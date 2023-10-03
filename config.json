@@ -3,5 +3,86 @@
         "Bab 1",
         "Bab 2",
         "Bab 3"
-    ]
+    ],
+    "fakultas": {
+        "Fakultas Ilmu dan Teknologi Kebumian": [
+            "All",
+            "Teknik Geologi",
+            "Teknik Geodesi dan Geomatika",
+            "Meteorologi",
+            "Oseanografi"
+        ],
+        "Fakultas Matematika dan Ilmu Pengetahuan Alam": [
+            "All",
+            "Matematika",
+            "Fisika",
+            "Astronomi",
+            "Kimia"
+        ],
+        "Fakultas Seni Rupa dan Desain": [
+            "All",
+            "Seni Rupa",
+            "Desain Interior",
+            "Desain Komunikasi Visual",
+            "Desain Produk"
+        ],
+        "Fakultas Teknologi Industri": [
+            "All",
+            "Teknik Kimia",
+            "Teknik Industri",
+            "Teknik Fisika",
+            "Manajemen Rekayasa Industri"
+        ],
+        "Fakultas Teknik Sipil dan Lingkungan": [
+            "All",
+            "Teknik Sipil",
+            "Teknik Lingkungan",
+            "Teknik Kelautan"
+        ],
+        "Fakultas Teknik Mesin dan Dirgantara": [
+            "All",
+            "Teknik Mesin",
+            "Teknik Dirgantara",
+            "Teknik Material"
+        ],
+        "Fakultas Teknik Pertambangan dan Perminyakan": [
+            "All",
+            "Teknik Pertambangan",
+            "Teknik Perminyakan",
+            "Teknik Geofisika",
+            "Teknik Metalurgi"
+        ],
+        "Sekolah Arsitektur, Perencanaan dan Pengembangan Kebijakan": [
+            "All",
+            "Arsitektur",
+            "Perencanaan Wilayah dan Kota"
+        ],
+        "Sekolah Bisnis dan Manajemen": [
+            "All",
+            "Manajemen",
+            "Kewirausahaan"
+        ],
+        "Sekolah Farmasi": [
+            "All",
+            "Sains dan Teknologi Farmasi, Farmasi Klinik dan Komunitas"
+        ],
+        "Sekolah Ilmu dan Teknologi Hayati": [
+            "All",
+            "Biologi",
+            "Mikrobiologi",
+            "Rekayasa Hayati",
+            "Rekayasa Pertanian",
+            "Rekayasa Kehutanan",
+            "Teknologi Pasca Panen"
+        ],
+        "Sekolah Teknik Elektro dan Informatika": [
+            "All",
+            "Teknik Elektro",
+            "Teknik Tenaga Listrik",
+            "Teknik Telekomunikasi",
+            "Teknik Biomedis",
+            "Teknik Informatika",
+            "Sistem dan Teknologi Informasi"
+        ]
+    }
 }
