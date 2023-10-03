@@ -1,3 +1,25 @@
+.dropdown {
+    background-color: #2C4C7B;
+    padding: 16px 64px 16px 16px;
+  }
+
+.dropbtn {
+    background-color: #2C4C7B;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    text-decoration-line: none;
+}
+.dropdown-content:link {
+    color: white;
+}
+
+.dropdown-content:visited {
+    color: white;
+}
+
 .stButton {
     display: flex;
     justify-content: center;
