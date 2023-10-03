@@ -2,7 +2,10 @@
     "kategori": [
         "Bab 1",
         "Bab 2",
-        "Bab 3"
+        "Bab 3",
+        "Bab 4",
+        "Bab 5",
+        "Bab 6"
     ],
     "fakultas": {
         "Fakultas Ilmu dan Teknologi Kebumian": [
@@ -64,7 +67,7 @@
         ],
         "Sekolah Farmasi": [
             "All",
-            "Sains dan Teknologi Farmasi, Farmasi Klinik dan Komunitas"
+            "Sains dan Teknologi Farmasi", "Farmasi Klinik dan Komunitas"
         ],
         "Sekolah Ilmu dan Teknologi Hayati": [
             "All",
