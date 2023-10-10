@@ -2,30 +2,6 @@
     padding-top: 0.5rem;
 }
 
-.dropdown {
-    background-color: #2C4C7B;
-    padding: 16px 64px 16px 16px;
-  }
-
-.dropbtn {
-    background-color: #2C4C7B;
-    border: none;
-    cursor: pointer;
-}
-
-
-
-.dropdown-content {
-    text-decoration-line: none;
-}
-.dropdown-content:link {
-    color: white;
-}
-
-.dropdown-content:visited {
-    color: white;
-}
-
 .stButton {
     display: flex;
     justify-content: center;
@@ -59,6 +35,38 @@ div[data-baseweb="select"] > div:focus-within{
     border-color: #BF9849;
 }
 
+div.streamlit-expanderHeader{
+    color: white;
+    background-color: #2C4C7B;
+    border-color: #BF9849;
+    border-radius: 5px;
+}
+div.streamlit-expanderHeader:hover svg{
+    color: white;
+    background-color: #2C4C7B;
+    border-color: #BF9849;
+    border-radius: 5px;
+    fill:#BF9849;
+}
+
+div.streamlit-expanderContent{
+    background-color: white;
+    border-radius: 5px;
+    border-color: #BF9849;
+}
+
+[data-testid="stHeader"] {
+    background:rgba(0,0,0,0);
+    }
+
+div.streamlit-expanderHeader:hover {
+    color: white;
+    background-color: #BF9849;
+    border-color: #BF9849;
+    border-radius: 5px;
+}
+
+
 div.stSlider > div[data-baseweb="slider"] > div > div > div[role="slider"]{
     background-color: #2C4C7B;
 }
@@ -78,15 +86,15 @@ div.stSlider > div[data-baseweb = "slider"] > div > div {
     background: #BF9849 }
 
 
-img {
+.c1 img {
     /* vertical-align: middle; */
+    justify-content: center;
+    margin-left: 70px;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 0px;
     padding-top: 0px;
 }
-
-
 
 .uploadedFile {display: none}
 footer {visibility: hidden;}
