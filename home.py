@@ -2,6 +2,8 @@ from config import Config
 import streamlit as st
 from streamlit_option_menu import option_menu
 import utils
+import pandas as pd
+import plotly.express as px
 
 # Import config from json
 cfg = Config('config.json').get_config()
@@ -32,6 +34,7 @@ with st.container():
 with st.container():
     c1, c2, c3 = st.columns(3)    
     c1.markdown(f"<div style='padding-left : 20px; padding-right: 20px; padding-bottom: 0px; padding-top: 5px; margin-left: 70px;'><img src=\"{utils.replace_image('assets/logo.png', 'img')}\" alt=\"Logo\" width=\"100\">", unsafe_allow_html=True)
+    #pilih fakultas
     select_bar = c2.selectbox(
         "Pilih Fakultas : ",
         (fakultas),
@@ -39,6 +42,7 @@ with st.container():
 
 # Main
 with st.container():
+        #pilih prodi
         if select_bar == fakultas[0]:
             inputProdi = c3.selectbox('Program Studi :', prodi) #Ini harusnya multipage
         else:
@@ -57,7 +61,42 @@ tahun_terpilih = st.slider('', min_value=min(tahun_range), max_value=max(tahun_r
 
 if tahun_terpilih == 2018:
     with st.expander("Bab 1"):
-        st.bar_chart({"data": [1, 5, 2, 6, 2, 1]}) # Konten
+        #Input
+        df2018 = pd.read_excel(
+        'Standarisasi_Kuesioner_2018-2022.xlsx', sheet_name="2018")
+        if select_bar == fakultas[0]:
+            #IP Histogram
+            st.write('Distribusi Indeks Prestasi')
+            ip1 = df2018['IP']
+            fig1 = px.histogram(ip1, x = "IP")
+            st.plotly_chart(fig1, use_container_width=True)
+        elif select_bar != fakultas[0] and inputProdi == 'All':
+            st.write('Distribusi Indeks Prestasi')
+            df = df2018[df2018['Fakultas/Sekolah'] == select_bar]
+            ip1 = df['IP']
+            fig1 = px.histogram(ip1, x="IP")
+            st.plotly_chart(fig1, use_container_width=True)
+        else:
+            st.write('Distribusi Indeks Prestasi')
+            df = df2018[df2018['Program Studi'] == inputProdi]
+            ip1 = df['IP']
+            fig1 = px.histogram(ip1, x="IP")
+            st.plotly_chart(fig1, use_container_width=True)
+
+            
+        #2. IPPerProdi
+        #
+        #ip = df2018['IP']
+        #pilih if All
+        #if select_bar == fakultas[0]:
+        #     ip = df2018[df2018['Fakultas/Sekolah'] == select_bar].groupby('Program Studi')['IP'].mean().reset_index().sort_values(by='IP',ascending=True)
+        #ifFakultas
+        #elif select_bar != fakultas[0] and  inputProdi == 'All'
+        #ifProdi
+        #else 
+        #    ip = df2018[df2018[''] == inputProdi].groupby('Program Studi')['IP'].mean().reset_index().sort_values(by='IP',ascending=True)
+        #figIP = px.histogram(ip, x="IP")
+        #st.plotly_chart(figIP, use_container_width=True)
 
     with st.expander("Bab 2"):
         st.bar_chart({"data": [1, 5, 2, 6, 2, 1]})
