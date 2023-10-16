@@ -10,11 +10,10 @@ import utils
 cfg = Config("config.json").get_config()
 kategori = cfg["kategori"]
 fakultas = ["All"] + sorted(list(cfg["fakultas"].keys()))
-prodi = sorted(list({[j for i in cfg["fakultas"].values() for j in i]}))
+prodi = sorted(list({j for i in cfg["fakultas"].values() for j in i}))
 
 # Set wide layout
 st.set_page_config(layout="wide")
-
 
 # Import css
 with open("style.css", encoding="utf-8") as f:

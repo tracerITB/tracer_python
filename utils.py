@@ -8,7 +8,7 @@ def replace_image(file_path, file_type):
         with open(file_path, "r", encoding="utf-8") as f:
             return f.read()
     else:
-        with open(file_path, "rb", encoding="utf-8") as f:
+        with open(file_path, "rb") as f:
             return (
                 f"data:image/jpeg;base64,{base64.b64encode(f.read()).decode('utf-8')}"
             )
