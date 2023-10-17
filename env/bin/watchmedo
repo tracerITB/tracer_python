@@ -1,4 +1,4 @@
-#!/home/safiqq/tracerstudy/tracerstudy_v3/env/bin/python3
+#!/home/safiqq/tracerstudy/tracerstudy_v3/env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
