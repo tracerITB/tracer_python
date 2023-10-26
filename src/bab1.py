@@ -1,6 +1,6 @@
 import streamlit as st
 import plotly.express as px
-
+import pandas as pd
 
 class BabSatu:
     def __init__(self, input_tahun, input_fakultas, input_prodi, dataframe):
@@ -18,6 +18,12 @@ class BabSatu:
             df = self.dataframe["IP"]
             fig = px.histogram(df, x="IP")
             st.plotly_chart(fig, use_container_width=True)
+            #IP Per Prodi
+            st.write("")
+            st.write("Indeks Prestasi per Program Studi")
+            df2 = self.dataframe.groupby('Program Studi')['IP'].mean().reset_index().sort_values(by='IP',ascending=True)
+            fig2 = px.bar(df2,  x='IP', y='Program Studi')
+            st.plotly_chart(fig2, use_container_width=True)
         # Fakultas
         elif self.input_fakultas != "All" and self.input_prodi == "All":
             st.write("")
@@ -28,6 +34,12 @@ class BabSatu:
             df = df["IP"]
             fig = px.histogram(df, x="IP")
             st.plotly_chart(fig, use_container_width=True)
+            #IP Per Prodi
+            st.write("")
+            st.write("Indeks Prestasi per Program Studi")
+            df2 = self.dataframe[self.dataframe['Fakultas/Sekolah'] == self.input_fakultas ].groupby('Program Studi')['IP'].mean().reset_index().sort_values(by='IP',ascending=True)
+            fig2 = px.bar(df2,  x='IP', y='Program Studi')
+            st.plotly_chart(fig2, use_container_width=True)
         # Program studi
         else:
             st.write("")
