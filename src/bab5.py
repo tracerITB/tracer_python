@@ -1,13 +1,9 @@
 import streamlit as st
-import plotly.express as px
 from src.bab import Bab
 
 
 class BabLima(Bab):
-    def __init__(self, input_tahun, input_fakultas, input_prodi, dataframe):
-        super().__init__(input_tahun, input_fakultas, input_prodi, dataframe)
-
-    def showKesesuaianKuliahDenganPekerjaan(self):
+    def show_kesesuaian_kuliah_dengan_pekerjaan(self):
         # All
         if self.input_fakultas == "All":
             st.warning("Not yet implemented.")
@@ -20,7 +16,7 @@ class BabLima(Bab):
         else:
             st.warning("Not yet implemented.")
 
-    def showKesesuaianKuliahDenganPekerjaanPerProdi(self):
+    def show_kesesuaian_kuliah_dengan_pekerjaan_per_prodi(self):
         # All
         if self.input_fakultas == "All":
             st.warning("Not yet implemented.")
@@ -33,7 +29,7 @@ class BabLima(Bab):
         else:
             st.warning("Not yet implemented.")
 
-    def showKategoriBidangUsaha(self):
+    def show_kategori_bidang_usaha(self):
         # All
         if self.input_fakultas == "All":
             st.warning("Not yet implemented.")
@@ -46,7 +42,7 @@ class BabLima(Bab):
         else:
             st.warning("Not yet implemented.")
 
-    def showKategoriBidangUsahaPerProdi(self):
+    def show_kategori_bidang_usaha_per_prodi(self):
         # All
         if self.input_fakultas == "All":
             st.warning("Not yet implemented.")
@@ -59,7 +55,7 @@ class BabLima(Bab):
         else:
             st.warning("Not yet implemented.")
 
-    def showKategoriJenisPekerjaan(self):
+    def show_kategori_jenis_pekerjaan(self):
         # All
         if self.input_fakultas == "All":
             st.warning("Not yet implemented.")
@@ -72,7 +68,7 @@ class BabLima(Bab):
         else:
             st.warning("Not yet implemented.")
 
-    def showJabatan(self):
+    def show_jabatan(self):
         # All
         if self.input_fakultas == "All":
             st.warning("Not yet implemented.")
@@ -85,7 +81,7 @@ class BabLima(Bab):
         else:
             st.warning("Not yet implemented.")
 
-    def showJabatanPerProdi(self):
+    def show_jabatan_per_prodi(self):
         # All
         if self.input_fakultas == "All":
             st.warning("Not yet implemented.")
@@ -98,8 +94,8 @@ class BabLima(Bab):
         else:
             st.warning("Not yet implemented.")
 
-    def showPenghasilanDanBonus(self, type):
-        if type == "bar":
+    def show_penghasilan_dan_bonus(self, graph_type):
+        if graph_type == "bar":
             # All
             if self.input_fakultas == "All":
                 st.warning("Not yet implemented.")
@@ -111,7 +107,7 @@ class BabLima(Bab):
             # Program studi
             else:
                 st.warning("Not yet implemented.")
-        elif type == "table":
+        elif graph_type == "table":
             # All
             if self.input_fakultas == "All":
                 st.warning("Not yet implemented.")
@@ -124,7 +120,7 @@ class BabLima(Bab):
             else:
                 st.warning("Not yet implemented.")
 
-    def showPenghasilanPerProdi(self):
+    def show_penghasilan_per_prodi(self):
         # All
         if self.input_fakultas == "All":
             st.warning("Not yet implemented.")
@@ -137,7 +133,7 @@ class BabLima(Bab):
         else:
             st.warning("Not yet implemented.")
 
-    def showBonusPerProdi(self):
+    def show_bonus_per_prodi(self):
         # All
         if self.input_fakultas == "All":
             st.warning("Not yet implemented.")
