@@ -1,13 +1,15 @@
 import streamlit as st
 import plotly.express as px
 import pandas as pd
+from src.bab import Bab
 
-class BabSatu:
+
+class BabSatu(Bab):
     def __init__(self, input_tahun, input_fakultas, input_prodi, dataframe):
-        self.input_tahun = input_tahun
-        self.input_fakultas = input_fakultas
-        self.input_prodi = input_prodi
-        self.dataframe = dataframe
+        super().__init__(input_tahun, input_fakultas, input_prodi, dataframe)
+
+    def show(self):
+        self.showIPAlumniITB()
 
     def showIPAlumniITB(self):
         # All

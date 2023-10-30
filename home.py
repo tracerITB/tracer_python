@@ -77,10 +77,9 @@ with st.container():
         }
 
     with st.expander("Bab 1"):
-        bab1 = BabSatu(
+        BabSatu(
             input_tahun, input_fakultas, input_prodi, dataframes.get(input_tahun)
-        )
-        bab1.showIPAlumniITB()
+        ).show()
 
     with st.expander("Bab 2"):
         st.bar_chart({"data": [1, 5, 2, 6, 2, 1]})
@@ -91,10 +90,9 @@ with st.container():
         st.warning("Not yet implemented.")
 
     with st.expander("Bab 4"):
-        bab4 = BabEmpat(
+        BabEmpat(
             input_tahun, input_fakultas, input_prodi, dataframes.get(input_tahun)
-        )
-        bab4.showKategoriPerusahaanPerProdi()
+        ).show()
 
     with st.expander("Bab 5"):
         st.bar_chart({"data": [1, 5, 2, 6, 2, 1]})
