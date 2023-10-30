@@ -9,8 +9,7 @@ class BabEmpat(Bab):
         super().__init__(input_tahun, input_fakultas, input_prodi, dataframe)
         self.kategori_perusahaan = ["multinasional", "nasional", "lokal"]
         self.bentuk_perusahaan = [
-            "instansi pemerintah",
-            "BUMN",
+            "instansi pemerintah (termasuk BUMN)",
             "organisasi non-profit / lembaga swadaya masyarakat",
             "perusahaan swasta",
             "wiraswasta / perusahaan sendiri",
