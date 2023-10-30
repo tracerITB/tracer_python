@@ -4,6 +4,7 @@ import streamlit as st
 from config import Config
 from src.bab1 import BabSatu
 from src.bab4 import BabEmpat
+from src.bab5 import BabLima
 import utils
 
 # Import config from json
@@ -95,5 +96,6 @@ with st.container():
         ).show()
 
     with st.expander("Bab 5"):
-        st.bar_chart({"data": [1, 5, 2, 6, 2, 1]})
-        st.warning("Not yet implemented.")
+        BabLima(
+            input_tahun, input_fakultas, input_prodi, dataframes.get(input_tahun)
+        ).show()

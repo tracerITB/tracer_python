@@ -5,7 +5,7 @@ from src.bab import Bab
 
 class BabEmpat(Bab):
     def __init__(self, *args):
-        super().__init__(self, *args)
+        super().__init__(*args)
         self.kategori_perusahaan = ["multinasional", "nasional", "lokal"]
         self.bentuk_perusahaan = [
             "instansi pemerintah (termasuk BUMN)",
@@ -39,12 +39,12 @@ class BabEmpat(Bab):
                 df,
                 x=self.kategori_perusahaan,
                 labels={"value": "Persentase"},
+                title="Kategori Perusahaan per Prodi"
             )
 
             # Adding labels
             annotations = []
-            for i in enumerate(fig.data):
-                bar_data = fig.data[i]
+            for i, bar_data in enumerate(fig.data):
                 x_values = bar_data.x
                 y_values = bar_data.y
 
@@ -70,8 +70,6 @@ class BabEmpat(Bab):
 
         # Fakultas
         elif self.input_fakultas != "All" and self.input_prodi == "All":
-            st.write("")
-            st.write("Kategori Perusahaan per Prodi")
             df = self.dataframe[
                 self.dataframe["Fakultas/Sekolah"] == self.input_fakultas
             ]
@@ -91,12 +89,12 @@ class BabEmpat(Bab):
                 df,
                 x=self.kategori_perusahaan,
                 labels={"value": "Persentase"},
+                title="Kategori Perusahaan per Prodi"
             )
 
             # Adding labels
             annotations = []
-            for i in enumerate(fig.data):
-                bar_data = fig.data[i]
+            for i, bar_data in enumerate(fig.data):
                 x_values = bar_data.x
                 y_values = bar_data.y
 
@@ -122,8 +120,6 @@ class BabEmpat(Bab):
 
         # Program studi
         else:
-            st.write("")
-            st.write("Kategori Perusahaan per Prodi")
             df = self.dataframe[self.dataframe["Program Studi"] == self.input_prodi]
             df = df["Apa kategori perusahaan tempat Anda bekerja?"].isin(
                 self.kategori_perusahaan
@@ -134,6 +130,7 @@ class BabEmpat(Bab):
                 y=df.value_counts().index.tolist(),
                 orientation="h",
                 labels={"x": "Jumlah", "y": "Kategori Perusahaan"},
+                title="Kategori Perusahaan per Prodi"
             )
 
             # Adding labels
@@ -158,8 +155,6 @@ class BabEmpat(Bab):
     def show_bentuk_perusahaan_tempat_bekerja(self):
         # All
         if self.input_fakultas == "All":
-            st.write("")
-            st.write("Bentuk Perusahaan Tempat Bekerja")
             df = self.dataframe[
                 self.dataframe[
                     "Apa jenis perusahaan / instansi / institusi tempat Anda bekerja sekarang?"
@@ -168,13 +163,11 @@ class BabEmpat(Bab):
             df = df[
                 "Apa jenis perusahaan / instansi / institusi tempat Anda bekerja sekarang?"
             ].value_counts()
-            fig = px.pie(df, values=df.tolist(), names=df.index.tolist())
+            fig = px.pie(df, values=df.tolist(), names=df.index.tolist(), title="Bentuk Perusahaan Tempat Bekerja")
             st.plotly_chart(fig, use_container_width=True)
 
         # Fakultas
         elif self.input_fakultas != "All" and self.input_prodi == "All":
-            st.write("")
-            st.write("Bentuk Perusahaan Tempat Bekerja")
             df = self.dataframe[
                 self.dataframe["Fakultas/Sekolah"] == self.input_fakultas
             ]
@@ -186,13 +179,11 @@ class BabEmpat(Bab):
             df = df[
                 "Apa jenis perusahaan / instansi / institusi tempat Anda bekerja sekarang?"
             ].value_counts()
-            fig = px.pie(df, values=df.tolist(), names=df.index.tolist())
+            fig = px.pie(df, values=df.tolist(), names=df.index.tolist(), title="Bentuk Perusahaan Tempat Bekerja")
             st.plotly_chart(fig, use_container_width=True)
 
         # Program studi
         else:
-            st.write("")
-            st.write("Bentuk Perusahaan Tempat Bekerja")
             df = self.dataframe[self.dataframe["Program Studi"] == self.input_prodi]
             df = df[
                 df[
@@ -202,36 +193,30 @@ class BabEmpat(Bab):
             df = df[
                 "Apa jenis perusahaan / instansi / institusi tempat Anda bekerja sekarang?"
             ].value_counts()
-            fig = px.pie(df, values=df.tolist(), names=df.index.tolist())
+            fig = px.pie(df, values=df.tolist(), names=df.index.tolist(), title="Bentuk Perusahaan Tempat Bekerja")
             st.plotly_chart(fig, use_container_width=True)
 
     def show_waktu_memulai_usaha(self):
         # All
         if self.input_fakultas == "All":
-            st.write("")
-            st.write("Waktu Memulai Usaha")
             df = self.dataframe["Kapankah Anda memulai usaha?"].value_counts()
-            fig = px.pie(df, values=df.tolist(), names=df.index.tolist())
+            fig = px.pie(df, values=df.tolist(), names=df.index.tolist(), title="Waktu Memulai Usaha")
             st.plotly_chart(fig, use_container_width=True)
 
         # Fakultas
         elif self.input_fakultas != "All" and self.input_prodi == "All":
-            st.write("")
-            st.write("Waktu Memulai Usaha")
             df = self.dataframe[
                 self.dataframe["Fakultas/Sekolah"] == self.input_fakultas
             ]
             df = df["Kapankah Anda memulai usaha?"].value_counts()
-            fig = px.pie(df, values=df.tolist(), names=df.index.tolist())
+            fig = px.pie(df, values=df.tolist(), names=df.index.tolist(), title="Waktu Memulai Usaha")
             st.plotly_chart(fig, use_container_width=True)
 
         # Program studi
         else:
-            st.write("")
-            st.write("Waktu Memulai Usaha")
             df = self.dataframe[self.dataframe["Program Studi"] == self.input_prodi]
             df = df["Kapankah Anda memulai usaha?"].value_counts()
-            fig = px.pie(df, values=df.tolist(), names=df.index.tolist())
+            fig = px.pie(df, values=df.tolist(), names=df.index.tolist(), title="Waktu Memulai Usaha")
             st.plotly_chart(fig, use_container_width=True)
 
     def show_waktu_memulai_usaha_persebaran(self):
