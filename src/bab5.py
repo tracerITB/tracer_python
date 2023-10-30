@@ -8,6 +8,7 @@ class BabLima(Bab):
         super().__init__(*args)
         self.kesesuaian = ["ya", "tidak"]
         self.bidang_usaha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U']
+        self.jabatan = ["Manajer", "Staf", "Magang", "Pemilik", "Direktur"]
 
     def show(self):
         self.show_kesesuaian_kuliah_dengan_pekerjaan()
@@ -24,7 +25,7 @@ class BabLima(Bab):
 
     def show_kesesuaian_kuliah_dengan_pekerjaan(self):
         # All
-        if self.input_fakultas == "All":
+        if self.input_fakultas == "All" and self.input_prodi == "All":
             df = self.dataframe[
                 self.dataframe["Apakah pekerjaan yang Anda lakukan di tempat bekerja sesuai dengan bidang kuliah?"].isin(
                     self.kesesuaian
@@ -68,7 +69,7 @@ class BabLima(Bab):
 
     def show_kesesuaian_kuliah_dengan_pekerjaan_per_prodi(self):
         # All
-        if self.input_fakultas == "All":
+        if self.input_fakultas == "All" and self.input_prodi == "All":
             df = self.dataframe[
                 self.dataframe["Apakah pekerjaan yang Anda lakukan di tempat bekerja sesuai dengan bidang kuliah?"].isin(
                     self.kesesuaian
@@ -201,7 +202,7 @@ class BabLima(Bab):
 
     def show_kategori_bidang_usaha(self):
         # All
-        if self.input_fakultas == "All":
+        if self.input_fakultas == "All" and self.input_prodi == "All":
             df = self.dataframe[self.dataframe["Bidang usaha bekerja"].isin(
                 self.bidang_usaha
             )]
@@ -242,10 +243,10 @@ class BabLima(Bab):
 
     def show_kategori_bidang_usaha_per_prodi(self):
         # All
-        if self.input_fakultas == "All":
+        if self.input_fakultas == "All" and self.input_prodi == "All":
             df = self.dataframe[
                 self.dataframe["Bidang usaha bekerja"].isin(
-                    self.kesesuaian
+                    self.bidang_usaha
                 )
             ]
             df = df.pivot_table(
@@ -257,7 +258,7 @@ class BabLima(Bab):
             df = df.div(df.sum(axis=1), axis=0) * 100
             fig = px.bar(
                 df,
-                x=self.kesesuaian,
+                x=self.bidang_usaha,
                 labels={"value": "Persentase"},
                 title="Kategori Bidang Usaha per Prodi"
             )
@@ -295,7 +296,7 @@ class BabLima(Bab):
             ]
             df = df[
                 df["Bidang usaha bekerja"].isin(
-                    self.kesesuaian
+                    self.bidang_usaha
                 )
             ]
             df = df.pivot_table(
@@ -307,7 +308,7 @@ class BabLima(Bab):
             df = df.div(df.sum(axis=1), axis=0) * 100
             fig = px.bar(
                 df,
-                x=self.kesesuaian,
+                x=self.bidang_usaha,
                 labels={"value": "Persentase"},
                 title="Kategori Bidang Usaha per Prodi"
             )
@@ -375,7 +376,7 @@ class BabLima(Bab):
 
     def show_kategori_jenis_pekerjaan(self):
         # All
-        if self.input_fakultas == "All":
+        if self.input_fakultas == "All" and self.input_prodi == "All":
             st.warning("Not yet implemented.")
 
         # Fakultas
@@ -388,20 +389,48 @@ class BabLima(Bab):
 
     def show_jabatan(self):
         # All
-        if self.input_fakultas == "All":
-            st.warning("Not yet implemented.")
+        if self.input_fakultas == "All" and self.input_prodi == "All":
+            df = self.dataframe[self.dataframe["Posisi / Jabatan (Bekerja)"].isin(
+                self.jabatan
+            )]
+            df = df[
+                "Posisi / Jabatan (Bekerja)"
+            ].value_counts().sort_index()
+            fig = px.pie(df, values=df.tolist(), names=df.index.tolist(), title="Jabatan")
+            fig.update_traces(sort=False)
+            st.plotly_chart(fig, use_container_width=True)
 
         # Fakultas
         elif self.input_fakultas != "All" and self.input_prodi == "All":
-            st.warning("Not yet implemented.")
-
+            df = self.dataframe[
+                self.dataframe["Fakultas/Sekolah"] == self.input_fakultas
+            ]
+            df = df[df["Posisi / Jabatan (Bekerja)"].isin(
+                self.jabatan
+            )]
+            df = df[
+                "Posisi / Jabatan (Bekerja)"
+            ].value_counts().sort_index()
+            fig = px.pie(df, values=df.tolist(), names=df.index.tolist(), title="Jabatan")
+            fig.update_traces(sort=False)
+            st.plotly_chart(fig, use_container_width=True)
+        
         # Program studi
         else:
-            st.warning("Not yet implemented.")
+            df = self.dataframe[self.dataframe["Program Studi"] == self.input_prodi]
+            df = df[df["Posisi / Jabatan (Bekerja)"].isin(
+                self.jabatan
+            )]
+            df = df[
+                "Posisi / Jabatan (Bekerja)"
+            ].value_counts().sort_index()
+            fig = px.pie(df, values=df.tolist(), names=df.index.tolist(), title="Jabatan")
+            fig.update_traces(sort=False)
+            st.plotly_chart(fig, use_container_width=True)
 
     def show_jabatan_per_prodi(self):
         # All
-        if self.input_fakultas == "All":
+        if self.input_fakultas == "All" and self.input_prodi == "All":
             st.warning("Not yet implemented.")
 
         # Fakultas
@@ -415,7 +444,7 @@ class BabLima(Bab):
     def show_penghasilan_dan_bonus(self, is_vertical_bar):
         if is_vertical_bar:
             # All
-            if self.input_fakultas == "All":
+            if self.input_fakultas == "All" and self.input_prodi == "All":
                 st.warning("Not yet implemented.")
 
             # Fakultas
@@ -427,7 +456,7 @@ class BabLima(Bab):
                 st.warning("Not yet implemented.")
         else:
             # All
-            if self.input_fakultas == "All":
+            if self.input_fakultas == "All" and self.input_prodi == "All":
                 st.warning("Not yet implemented.")
 
             # Fakultas
@@ -440,7 +469,7 @@ class BabLima(Bab):
 
     def show_penghasilan_per_prodi(self):
         # All
-        if self.input_fakultas == "All":
+        if self.input_fakultas == "All" and self.input_prodi == "All":
             st.warning("Not yet implemented.")
 
         # Fakultas
@@ -453,7 +482,7 @@ class BabLima(Bab):
 
     def show_bonus_per_prodi(self):
         # All
-        if self.input_fakultas == "All":
+        if self.input_fakultas == "All" and self.input_prodi == "All":
             st.warning("Not yet implemented.")
 
         # Fakultas

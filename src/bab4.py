@@ -22,7 +22,7 @@ class BabEmpat(Bab):
 
     def show_kategori_perusahaan_per_prodi(self):
         # All
-        if self.input_fakultas == "All":
+        if self.input_fakultas == "All" and self.input_prodi == "All":
             df = self.dataframe[
                 self.dataframe["Apa kategori perusahaan tempat Anda bekerja?"].isin(
                     self.kategori_perusahaan
@@ -154,7 +154,7 @@ class BabEmpat(Bab):
 
     def show_bentuk_perusahaan_tempat_bekerja(self):
         # All
-        if self.input_fakultas == "All":
+        if self.input_fakultas == "All" and self.input_prodi == "All":
             df = self.dataframe[
                 self.dataframe[
                     "Apa jenis perusahaan / instansi / institusi tempat Anda bekerja sekarang?"
@@ -198,7 +198,7 @@ class BabEmpat(Bab):
 
     def show_waktu_memulai_usaha(self):
         # All
-        if self.input_fakultas == "All":
+        if self.input_fakultas == "All" and self.input_prodi == "All":
             df = self.dataframe["Kapankah Anda memulai usaha?"].value_counts()
             fig = px.pie(df, values=df.tolist(), names=df.index.tolist(), title="Waktu Memulai Usaha")
             st.plotly_chart(fig, use_container_width=True)
@@ -221,7 +221,7 @@ class BabEmpat(Bab):
 
     def show_waktu_memulai_usaha_persebaran(self):
         # All
-        if self.input_fakultas == "All":
+        if self.input_fakultas == "All" and self.input_prodi == "All":
             df = self.dataframe[
                 [
                     "Berapa bulan waktu yang digunakan (sebelum kelulusan) untuk memulai usaha?",

@@ -9,7 +9,7 @@ class BabSatu(Bab):
 
     def show_ip_alumni_itb(self):
         # All
-        if self.input_fakultas == "All":
+        if self.input_fakultas == "All" and self.input_prodi == "All":
             # IP Histogram
             st.write("")
             st.write("Distribusi Indeks Prestasi")
