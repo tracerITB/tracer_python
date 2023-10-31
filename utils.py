@@ -27,3 +27,37 @@ def load_data():
     df2021 = load_excel(file_name, "2021")
     df2022 = load_excel(file_name, "2022")
     return df2018, df2019, df2020, df2021, df2022
+
+def clustering(data, num_categories):
+    num_categories = num_categories
+    all_reasons = np.array(data)
+    tfidf_vectorizer = TfidfVectorizer()
+    tfidf_matrix = tfidf_vectorizer.fit_transform(all_reasons)
+    kmeans = KMeans(n_clusters=num_categories, random_state=0)
+    kmeans.fit(tfidf_matrix)
+    reasons_categories = kmeans.labels_
+
+    # Create a dictionary to group reasons by category
+    category_reasons = {i: [] for i in range(num_categories)}
+
+    # Generate titles for each category using batch processing
+    category_titles = []
+
+    for i, reason in enumerate(all_reasons):
+        category = reasons_categories[i]
+        category_reasons[category].append(reason)
+    for category, reasons in category_reasons.items():
+    # Calculate the centroid of the cluster (representative point)
+        centroid = np.mean(tfidf_matrix.toarray()[np.array(reasons_categories) == category], axis=0)
+        
+        # Find the reason closest to the centroid
+        representative_reason_index = np.argmax(np.dot(tfidf_matrix.toarray(), centroid))
+        
+        # Use the most representative reason as the category title
+        category_titles.append(all_reasons[representative_reason_index])
+
+    # Display the 10 categories and their reasons
+    for i, (title, reasons) in enumerate(zip(category_titles, category_reasons.values())):
+        st.write(f"{title}")
+        for reason in reasons:
+            st.write(f"- {reason}")
