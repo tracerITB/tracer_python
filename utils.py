@@ -2,6 +2,8 @@
 import base64
 import pandas as pd
 import streamlit as st
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.cluster import KMeans
 
 
 def replace_image(file_path, file_type):
